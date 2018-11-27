@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest schemaVersion="1.1" templateType="Project" 
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>FunctionManifest</name>
+    <id>3247982374932</id>
+    <version>0.0.1</version>
+    <title>FunctionManifest</title>
+    <description>This is a manifest that begins everything we need to create Justin functions</description>
+    <author>Send Temps</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+    <parameter name="funcName" type="text" prompt="Name of the function"/>
+    <parameter name="funcSyn" type="text" prompt="What will this function do?"/>
+    <parameter name="ModuleAuth" type="user-fullname" prompt="Author of the Module"/>
+  </parameters>
+  <content>
+    <newModuleManifest destination='${PLASTER_PARAM_funcName}.psd1' moduleVersion='0.0.1' author='PLASTER_PARAM_ModuleAuth' description="$PLASTER_PARAM_funcSyn"/>
+    <file destination="Functions/" source=""/>
+    <templateFile source="function.ps1" destination="Functions/${PLASTER_PARAM_funcName}.ps1"/>
+  </content>
+</plasterManifest>

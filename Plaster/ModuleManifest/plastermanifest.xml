@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest schemaVersion="1.1" templateType="Project" 
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>JustinsManifest</name>
+    <id>423874298472</id>
+    <version>0.0.1</version>
+    <title>Justins Module Template</title>
+    <description>This will create a Justin module with testing and a Manifest file</description>
+    <author>Justin Rice</author>
+    <tags></tags>
+  </metadata>
+  <parameters>
+    <parameter name="ModuleName" type="text" prompt="Name of the module:"/>
+    <parameter name="ModuleDesc" type="text" prompt="Description of the Module:"/>
+    <parameter name="ModuleAuth" type="user-fullname" prompt="Author of the Module:"/>
+    <parameter name="ModuleVer" type="text" default="0.0.1" prompt="Version Number: "/>
+  </parameters>
+  <content>
+    <newModuleManifest destination='${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='${PLASTER_PARAM_ModuleVer}' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='PLASTER_PARAM_ModuleAuth' description="$PLASTER_PARAM_ModuleDesc"/>
+    <file destination="${PLASTER_PARAM_ModuleName}.psm1" source="module.psm1"/>
+    <file destination="Tests\${PLASTER_PARAM_ModuleName}.tests.ps1" source="Tester.tests.ps1"/>
+    <file destination="Tests\${PLASTER_PARAM_ModuleName}.ps1" source="Tester.ps1"/>
+  </content>
+</plasterManifest>
